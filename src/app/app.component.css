@@ -1,5 +1,5 @@
 
-.top-menu {
+.top-menu1 {
     background: #1976d2;
     padding: 2px 15px;
 }
@@ -14,6 +14,17 @@
     margin: 50px auto;
 }
 
+
+course-card.is-first
+{
+  border-top: 2px solid gray;
+  padding-top: 20px;
+}
+
+course-card.is-last {
+  border-bottom: 2px solid gray;
+  padding-bottom: 20px;
+}
 
 
 

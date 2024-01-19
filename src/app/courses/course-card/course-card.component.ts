@@ -14,14 +14,12 @@ import {Course} from '../../model/course';
 import {CoursesService} from '../courses.service';
 import {CommonModule, NgIf} from '@angular/common';
 
-
-
 @Component({
   selector: 'course-card',
   templateUrl: './course-card.component.html',
   styleUrls: ['./course-card.component.css'],
   imports: [
-    NgIf
+    NgIf, CommonModule
   ],
   standalone: true
 
@@ -34,36 +32,37 @@ export class CourseCardComponent implements  OnInit {
     @Input()
     cardIndex: number;
 
-    @Output('courseChanged')
+    @Input()
+    index : number
+
+    @Output('courseChanged') 
     courseEmitter = new EventEmitter<Course>();
-
-
-
 
     constructor(private coursesService: CoursesService,
                 @Attribute('type') private type: string) {
-
-
     }
 
+
     ngOnInit() {
-
-
     }
 
 
 
     onTitleChanged(newTitle: string) {
-
         this.course.description = newTitle;
-
     }
 
 
     onSaveClicked(description: string) {
-
         this.courseEmitter.emit({...this.course, description});
+    }
 
+  cardClasses()
+    {
+      return {
+        'beginner': this.course.category === 'BEGINNER',
+        'course-card' : true     
+      }
     }
 
 
